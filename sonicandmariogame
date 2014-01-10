@@ -1,0 +1,37 @@
+PImage background, sonic, sc,b;
+PVector loc, vel, sloc;
+int x,y,y1;
+
+void setup() {
+  vel = new PVector(mouseX, 10);
+  loc = new PVector(mouseX, height + x); 
+  sloc = new PVector(mouseX, height - y);
+  background = loadImage("background1.jpg");
+  sonic = loadImage("download.png");
+  sc = loadImage("little cloud.png");
+  b = loadImage("blox.png");
+  size(1200,800);
+  x = 100;
+  y = 300;
+
+} 
+
+void draw() {
+  image(background,0,0);
+  image(sonic, mouseX, height- 250);
+  image(sc, 400,100);
+  image(b, 300, 50);
+  sonicJump();
+}
+
+void sonicJump() {
+  if(keyPressed) {
+    if(key == 'J' || key == 'j') {
+      image(sonic, mouseX, sloc.y);
+      sloc.add(vel);
+      if(sloc.y >= 600) {
+        sloc.y = 850;
+      }
+    }
+  }
+}
